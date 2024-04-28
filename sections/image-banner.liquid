@@ -115,6 +115,12 @@
     <div class="banner__box content-container content-container--full-width-mobile color-{{ section.settings.color_scheme }} gradient">
       {%- for block in section.blocks -%}
         {%- case block.type -%}
+          {% when 'img_logo' %}
+            <img src="{{ block.settings.img_logo | image_url: width: 760  }}" 
+            alt="{{ block.settings.img_logo }}" 
+            loading="lazy"
+            width="{{ block.settings.image.width }}"
+            height="{{ block.settings.image.height }}">
           {%- when 'heading' -%}
             <h2
               class="banner__heading inline-richtext {{ block.settings.heading_size }}"
@@ -466,7 +472,20 @@
           "label": "t:sections.image-banner.blocks.buttons.settings.button_style_secondary_2.label"
         }
       ]
+    },
+    {
+      "type": "img_logo",
+      "name": "img_logo",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "img_logo",
+          "label": "Mark"
+        }
+      ]
     }
+    
   ],
   "presets": [
     {
